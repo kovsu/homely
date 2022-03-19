@@ -1,5 +1,6 @@
 <template>
   <div>
+    <head-status />
     <router-view />
     <bottom-nav />
   </div>
@@ -8,10 +9,12 @@
 <script>
 import { reactive, toRefs } from "vue";
 import BottomNav from "./components/BottomNav.vue";
+import HeadStatus from "./components/HeadStatus.vue";
 
 export default {
   components: {
     BottomNav,
+    HeadStatus,
   },
   setup() {
     const data = reactive({});
@@ -23,10 +26,14 @@ export default {
 </script>
 
 <style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-size: 0.14rem;
   font-family: "GT Ultra Trial";
-  background: rgb(187, 78, 78);
 }
 
 a {
