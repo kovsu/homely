@@ -1,11 +1,20 @@
 <template>
   <div>
-    <h1>Discover</h1>
+    <DiscoverSearch />
+    <DiscoverToolkits />
   </div>
 </template>
 
 <script>
-export default {};
+import DiscoverSearch from "../components/DiscoverSearch.vue";
+import DiscoverToolkits from "@/components/DiscoverToolkits.vue";
+
+export default {
+  components: {
+    DiscoverSearch,
+    DiscoverToolkits,
+  },
+};
 </script>
 
 <style lang="less"></style>
