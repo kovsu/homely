@@ -40,17 +40,18 @@ export default {
     });
     let timer = setInterval(() => {
       data.now = new Date();
-      console.log(data.now);
+      // console.log(data.now);
     }, 60000);
 
     watch(
       () => data.now,
-      (newVal) => {
+      async (newVal) => {
         if (parseInt(data.remainTime) <= 1) {
           alert("任务已经到时间了");
           clearInterval(timer);
           data.remainTime = "0";
-          handle.setStatus(props.planId, props.userId);
+          let res = handle.setStatus(props.planId, props.userId);
+          console.log("设置计划状态", res);
         } else {
           // console.log("-------");
           data.remainTime = calcTime(props.time, newVal);
