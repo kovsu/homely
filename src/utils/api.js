@@ -58,9 +58,48 @@ const setStatus = (planId, userId) =>
       });
   });
 
+const getPlanInfo = (id) =>
+  new Promise((resolve, reject) => {
+    axios
+      .get("/plan/planInfo", {
+        params: {
+          id,
+        },
+      })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+
+// 上传计划
+const publishPlan = (planId, userId, name, start_time, time) =>
+  new Promise((resolve, reject) => {
+    axios
+      .get("/plan/publish", {
+        params: {
+          planId,
+          userId,
+          name,
+          start_time,
+          time,
+        },
+      })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+
 export default {
   getAllKits,
   getAllCategeoris,
   getMyPlan,
   setStatus,
+  getPlanInfo,
+  publishPlan,
 };

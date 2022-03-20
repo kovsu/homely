@@ -3,8 +3,17 @@
     <head-status />
     <router-view v-slot="{ Component }">
       <keep-alive>
-        <component :is="Component" :key="$route.fullPath" />
+        <component
+          :is="Component"
+          :key="$route.name"
+          v-if="$route.meta.keepAlive"
+        />
       </keep-alive>
+      <component
+        :is="Component"
+        :key="$route.name"
+        v-if="!$route.meta.keepAlive"
+      />
     </router-view>
     <bottom-nav />
   </div>

@@ -27,7 +27,10 @@ export default {
 
     // console.log(props);
     let totalTime = calcTime(props.time, props.start_time);
-    let remainTime = calcTime(props.time, new Date());
+    let remainTime =
+      calcTime(props.time, new Date()) <= 0
+        ? "0"
+        : calcTime(props.time, new Date());
 
     const data = reactive({
       ...props,
@@ -43,11 +46,11 @@ export default {
     watch(
       () => data.now,
       (newVal) => {
-        if (parseInt(data.remainTime) <= 0) {
+        if (parseInt(data.remainTime) <= 1) {
           alert("任务已经到时间了");
+          clearInterval(timer);
           data.remainTime = "0";
           handle.setStatus(props.planId, props.userId);
-          clearInterval(timer);
         } else {
           // console.log("-------");
           data.remainTime = calcTime(props.time, newVal);

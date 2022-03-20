@@ -9,6 +9,7 @@
         v-for="item in categeoris"
         :key="item.id"
         :class="item.style"
+        @click="goToPublish(item.id)"
       >
         <div class="des">
           <p>{{ item.category }}</p>
@@ -23,9 +24,12 @@
 
 <script>
 import { reactive, toRefs, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
 import handle from "../utils/api";
 export default {
   setup() {
+    const router = useRouter();
     const data = reactive({
       categeoris: [],
     });
@@ -34,8 +38,13 @@ export default {
       console.log(res.data.data);
       data.categeoris = res.data.data;
     });
+    const goToPublish = (e) => {
+      router.push("/publishPlan/" + e);
+      // console.log(e);
+    };
     return {
       ...toRefs(data),
+      goToPublish,
     };
   },
 };
