@@ -59,11 +59,12 @@ export default {
   width: 2.95rem;
   height: 0.65rem;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   position: fixed;
   left: 50%;
   bottom: 0.3rem;
   transform: translateX(-50%);
+  z-index: 9;
   .nav {
     width: 2.95rem;
     height: 0.65rem;

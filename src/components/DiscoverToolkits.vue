@@ -7,7 +7,7 @@
       <a href="javascript:void(0);">See all</a>
     </div>
     <div class="tools">
-      <div class="tool" v-for="(item, index) in tools" :key="index">
+      <div class="tool" v-for="item in tools" :key="item.id">
         <div :class="item.style" class="icon">
           <img :src="item.imgUrl" alt="" />
         </div>
